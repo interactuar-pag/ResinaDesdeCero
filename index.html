@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad de Arte y Resina - Registro</title>
+    <style>
+        :root { 
+            --primary: #bc9c22; 
+            --accent: #25d366; 
+            --dark: #1a1a1a; 
+            --light: #ffffff; 
+            --bg: #f0f2f5;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--dark); 
+            line-height: 1.6; 
+        }
+
+        .container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: var(--light); 
+            min-height: 100vh; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.1); 
+            position: relative;
+        }
+
+        header { 
+            background: var(--dark); 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            border-radius: 0 0 20px 20px; 
+        }
+
+        section { 
+            display: none; 
+            padding: 25px; 
+            animation: fadeIn 0.4s ease-out; 
+        }
+
+        .active { display: block; }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .progress-bar { height: 8px; background: #eee; width: 100%; }
+        .progress-fill { height: 100%; background: var(--primary); transition: 0.5s; width: 0%; }
+
+        .btn-main { 
+            background: var(--primary); 
+            color: white; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            width: 100%; 
+            transition: 0.3s; 
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(188, 156, 34, 0.3);
+        }
+
+        .btn-option { 
+            display: block; 
+            width: 100%; 
+            padding: 15px; 
+            margin: 12px 0; 
+            border: 2px solid #f0f0f0; 
+            background: white; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            text-align: left; 
+            transition: 0.2s;
+        }
+
+        .btn-option:hover { border-color: var(--primary); background: #fffdf5; }
+
+        .btn-whatsapp { 
+            background: var(--accent); 
+            color: white; 
+            padding: 20px; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            font-weight: bold; 
+            font-size: 18px; 
+            display: block; 
+            text-align: center; 
+            margin-top: 25px; 
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .media-box { 
+            background: #f9f9f9; 
+            width: 100%; 
+            border-radius: 15px; 
+            margin: 20px 0; 
+            border: 1px solid #ddd; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            min-height: 180px; 
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .media-box img, .media-box video { width: 100%; display: block; }
+
+        .grid-resultados { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        /* Aumentamos la altura de los items para que las fotos se vean más grandes */
+        .grid-item { background: #eee; border-radius: 10px; overflow: hidden; height: 200px; border: 1px solid #ddd; }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .badge-seguridad {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    
+    <section id="step0" class="active">
+        <header><h1>¡Hola! Bienvenidos 🚀✨ </h1></header>
+        <div class="media-box">
+            <div class="media-box" style="margin-top: 15px;">
+            <img src="RELOJ EN  RESINA.png" alt="Más Accesorios">
+        </div>
+        </div>
+        <h2 style="text-align: center;">Descubre el arte que está transformando vidas</h2>
+        <p>He preparado esta dinámica para conocer tu estilo y mostrarte cómo puedes dominar la resina desde cero este 2026.</p>
+        <button class="btn-main" onclick="nextStep(1, '25%')">¡Quiero comenzar! ✨</button>
+    </section>
+
+    <section id="step1">
+        <h3>¿Qué es lo que más te gustaría aprender a diseñar?</h3>
+        <button class="btn-option" onclick="nextStep(2, '50%')">💍 Bisutería artesanal</button>
+        <button class="btn-option" onclick="nextStep(2, '50%')">🖼️ Cuadros y decoración de pared</button>
+        <button class="btn-option" onclick="nextStep(2, '50%')">💎 Joyería y accesorios de lujo</button>
+        <button class="btn-option" onclick="nextStep(2, '50%')">✨ Todas las anteriores</button>
+    </section>
+
+    <section id="step2">
+        <h3>¿Cuál es tu objetivo principal?</h3>
+        <button class="btn-option" onclick="nextStep(3, '75%')">🚀 Emprender mi propio negocio</button>
+        <button class="btn-option" onclick="nextStep(3, '75%')">🎨 Por hobby y desestresarme</button>
+        <button class="btn-option" onclick="nextStep(3, '75%')">🎁 Hacer regalos únicos</button>
+    </section>
+
+    <section id="step3">
+        <h2>Mira lo que vas a lograr...</h2>
+        
+        <div class="media-box">
+            <img src="ACCESORIOS 7.png" alt="Accesorios">
+        </div>
+        
+        <div class="grid-resultados">
+            <div class="grid-item"><img src="photo_2024-06-24_16-01-05.jpg" alt="Resultado 1"></div>
+            <div class="grid-item"><img src="photo_2024-06-24_16-01-10.jpg" alt="Resultado 2"></div>
+            <div class="grid-item"><img src="photo_2024-06-24_16-01-13.jpg" alt="Resultado 3"></div>
+            <div class="grid-item"><img src="photo_2024-06-24_16-01-18.jpg" alt="Resultado 4"></div>
+        </div>
+
+        <button class="btn-main" onclick="nextStep(4, '100%')">¡Ver mi invitación especial! 🎁</button>
+    </section>
+
+    <section id="step4">
+        <h2 style="color: var(--primary); text-align: center;">¡Cupo Disponible!</h2>
+        <p>Basado en tus respuestas, eres el perfil ideal para nuestras clases intensivas del <strong>25 y 26 de febrero</strong>.</p>
+        
+        <div style="background: #fff9e6; padding: 15px; border-radius: 10px; border: 1px solid #ffeeba; margin: 20px 0;">
+            <p style="margin: 0; font-weight: bold; color: #856404;">Lo que recibirás al unirte:</p>
+            <ul style="margin: 10px 0; padding-left: 20px; font-size: 14px;">
+                <li>Acceso al grupo privado de alumnos.</li>
+                <li>Lista de materiales básicos para comenzar.</li>
+                <li>Guía para las clases en vivo del 25 y 26.</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; font-weight: bold;">Toca el botón para participar y acceder al grupo:</p>
+
+        <a href="https://wa.me/593959805495?text=Hola%20%20me%20interesa%20aprender%20resina%20y%20quiero%20información%20sobre%20las%20clases%20en%20vivo" class="btn-whatsapp">
+            📲 UNIRME AL GRUPO AHORA
+        </a>
+        <div class="media-box" style="margin-top: 15px;">
+            <img src="ACCESORIOS 8.png" alt="Más Accesorios">
+        </div>
+
+        <div class="badge-seguridad">
+            ✅ Registro gratuito para futuros emprendedores.
+        </div>
+    </section>
+</div>
+
+<script>
+    function nextStep(step, progress) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        const nextSection = document.getElementById('step' + step);
+        if (nextSection) {
+            nextSection.classList.add('active');
+        }
+        document.getElementById('progress').style.width = progress;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
